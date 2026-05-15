@@ -17,8 +17,8 @@ function StatCard({ label, value, sub, color = 'indigo', icon }) {
         </svg>
       </div>
       <div>
-        <p className="text-slate-400 text-sm">{label}</p>
-        <p className="text-2xl font-bold text-white mt-0.5">{value}</p>
+        <p className="text-slate-600 text-sm">{label}</p>
+        <p className="text-2xl font-bold text-slate-900 mt-0.5">{value}</p>
         {sub && <p className="text-xs text-slate-500 mt-0.5">{sub}</p>}
       </div>
     </div>
@@ -28,7 +28,7 @@ function StatCard({ label, value, sub, color = 'indigo', icon }) {
 // Completion progress bar
 function ProgressBar({ value }) {
   return (
-    <div className="w-full bg-slate-700 rounded-full h-1.5">
+    <div className="w-full bg-slate-200 rounded-full h-1.5">
       <div
         className="bg-indigo-500 h-1.5 rounded-full transition-all duration-700"
         style={{ width: `${Math.min(value, 100)}%` }}
@@ -58,8 +58,8 @@ export default function DashboardPage() {
     <div className="space-y-6 animate-fade-in">
       {/* Page header */}
       <div>
-        <h1 className="text-xl font-bold text-white">Dashboard</h1>
-        <p className="text-slate-400 text-sm mt-0.5">Your work summary across all projects</p>
+        <h1 className="text-xl font-bold text-slate-900">Dashboard</h1>
+        <p className="text-slate-600 text-sm mt-0.5">Your work summary across all projects</p>
       </div>
 
       {/* Stat cards */}
@@ -82,9 +82,9 @@ export default function DashboardPage() {
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
         {/* Project breakdown */}
         <div className="card p-5 xl:col-span-2">
-          <h2 className="text-sm font-semibold text-white mb-4">By Project</h2>
+          <h2 className="text-sm font-semibold text-slate-900 mb-4">By Project</h2>
           {by_project.length === 0 ? (
-            <p className="text-slate-500 text-sm">No projects yet.</p>
+            <p className="text-slate-600 text-sm">No projects yet.</p>
           ) : (
             <div className="space-y-4">
               {by_project.map((p) => {
@@ -108,15 +108,15 @@ export default function DashboardPage() {
 
         {/* My tasks widget */}
         <div className="card p-5">
-          <h2 className="text-sm font-semibold text-white mb-4">My Assigned Tasks</h2>
+          <h2 className="text-sm font-semibold text-slate-900 mb-4">My Assigned Tasks</h2>
           <div className="space-y-3">
             {[
-              { label: 'Total assigned', value: my_assigned_tasks.total, color: 'text-white' },
+              { label: 'Total assigned', value: my_assigned_tasks.total, color: 'text-slate-900' },
               { label: 'Completed',      value: my_assigned_tasks.completed, color: 'text-emerald-400' },
               { label: 'Overdue',        value: my_assigned_tasks.overdue,   color: 'text-red-400' },
             ].map(({ label, value, color }) => (
-              <div key={label} className="flex justify-between items-center py-2 border-b border-slate-700 last:border-0">
-                <span className="text-sm text-slate-400">{label}</span>
+              <div key={label} className="flex justify-between items-center py-2 border-b border-slate-200 last:border-0">
+                <span className="text-sm text-slate-600">{label}</span>
                 <span className={`text-lg font-bold ${color}`}>{value}</span>
               </div>
             ))}

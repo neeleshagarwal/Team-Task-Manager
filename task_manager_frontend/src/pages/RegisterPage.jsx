@@ -55,7 +55,7 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative w-full max-w-sm animate-slide-up">
@@ -66,13 +66,13 @@ export default function RegisterPage() {
               <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
             </svg>
           </div>
-          <h1 className="text-2xl font-bold text-white">Create your account</h1>
-          <p className="text-slate-400 text-sm mt-1">Start managing tasks with your team</p>
+          <h1 className="text-2xl font-bold text-slate-900">Create your account</h1>
+          <p className="text-slate-600 text-sm mt-1">Start managing tasks with your team</p>
         </div>
 
         <div className="card p-6">
           {apiError && (
-            <div className="mb-4 p-3 bg-red-900/40 border border-red-700 rounded-lg text-red-300 text-sm">
+            <div className="mb-4 p-3 bg-red-100 border border-red-300 rounded-lg text-red-700 text-sm">
               {apiError}
             </div>
           )}
@@ -95,9 +95,9 @@ export default function RegisterPage() {
           </form>
         </div>
 
-        <p className="text-center text-slate-400 text-sm mt-5">
+        <p className="text-center text-slate-600 text-sm mt-5">
           Already have an account?{' '}
-          <Link to="/login" className="text-indigo-400 hover:text-indigo-300 font-medium transition-colors">
+          <Link to="/login" className="text-indigo-600 hover:text-indigo-500 font-medium transition-colors">
             Sign in
           </Link>
         </p>

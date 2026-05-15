@@ -11,13 +11,13 @@ function ProjectCard({ project, onDelete }) {
   const navigate = useNavigate()
   return (
     <div
-      className="card p-5 hover:border-slate-600 transition-all duration-200 group cursor-pointer"
+      className="card p-5 hover:border-slate-300 transition-all duration-200 group cursor-pointer"
       onClick={() => navigate(`/projects/${project.id}/tasks`)}
     >
       <div className="flex items-start justify-between">
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1">
-            <h3 className="text-sm font-semibold text-white group-hover:text-indigo-400 transition-colors truncate">
+            <h3 className="text-sm font-semibold text-slate-900 group-hover:text-indigo-600 transition-colors truncate">
               {project.name}
             </h3>
             <Badge variant="role" value={project.my_role} />
@@ -27,7 +27,7 @@ function ProjectCard({ project, onDelete }) {
         {project.my_role === 'ADMIN' && (
           <button
             onClick={(e) => { e.stopPropagation(); onDelete(project.id) }}
-            className="opacity-0 group-hover:opacity-100 ml-2 p-1.5 text-slate-500 hover:text-red-400 hover:bg-red-900/20 rounded-lg transition-all"
+            className="opacity-0 group-hover:opacity-100 ml-2 p-1.5 text-slate-600 hover:text-red-600 hover:bg-red-100 rounded-lg transition-all"
             aria-label="Delete project"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -36,14 +36,14 @@ function ProjectCard({ project, onDelete }) {
           </button>
         )}
       </div>
-      <div className="flex items-center gap-4 mt-4 pt-4 border-t border-slate-700">
-        <div className="flex items-center gap-1.5 text-slate-400">
+      <div className="flex items-center gap-4 mt-4 pt-4 border-t border-slate-200">
+        <div className="flex items-center gap-1.5 text-slate-600">
           <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
           </svg>
           <span className="text-xs">{project.task_count} tasks</span>
         </div>
-        <div className="flex items-center gap-1.5 text-slate-400">
+        <div className="flex items-center gap-1.5 text-slate-600">
           <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0" />
           </svg>
@@ -108,8 +108,8 @@ export default function ProjectsPage() {
     <div className="space-y-6 animate-fade-in">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-xl font-bold text-white">Projects</h1>
-          <p className="text-slate-400 text-sm mt-0.5">
+          <h1 className="text-xl font-bold text-slate-900">Projects</h1>
+          <p className="text-slate-600 text-sm mt-0.5">
             {projects.length} project{projects.length !== 1 ? 's' : ''}
           </p>
         </div>
@@ -127,13 +127,13 @@ export default function ProjectsPage() {
         <div className="text-center py-16 text-red-400">Failed to load projects. Please refresh.</div>
       ) : projects.length === 0 ? (
         <div className="text-center py-20">
-          <div className="w-16 h-16 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center mx-auto mb-4">
-            <svg className="w-8 h-8 text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div className="w-16 h-16 rounded-2xl bg-slate-100 border border-slate-200 flex items-center justify-center mx-auto mb-4">
+            <svg className="w-8 h-8 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
             </svg>
           </div>
-          <p className="text-slate-400 font-medium">No projects yet</p>
-          <p className="text-slate-500 text-sm mt-1">Create your first project to get started</p>
+          <p className="text-slate-700 font-medium">No projects yet</p>
+          <p className="text-slate-600 text-sm mt-1">Create your first project to get started</p>
           <Button className="mt-5" onClick={() => setShowCreate(true)}>Create your first project</Button>
         </div>
       ) : (

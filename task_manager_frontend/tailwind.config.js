@@ -4,9 +4,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        surface: '#0f172a',   // page background (slate-900)
-        card:    '#1e293b',   // card background (slate-800)
-        border:  '#334155',   // card border    (slate-700)
+        surface: '#f8fafc',   // page background (slate-50)
+        card:    '#ffffff',   // card background (white)
+        border:  '#e2e8f0',   // card border    (slate-200)
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],

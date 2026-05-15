@@ -20,9 +20,9 @@ const COLUMNS = [
 function TaskCard({ task, isAdmin, onStatusChange, onDelete, projectId }) {
   const isOverdue = task.is_overdue
   return (
-    <div className="card p-3.5 hover:border-slate-500 transition-all duration-150 group">
+    <div className="card p-3.5 hover:border-slate-300 transition-all duration-150 group">
       <div className="flex items-start justify-between gap-2">
-        <p className="text-sm font-medium text-white leading-snug">{task.title}</p>
+        <p className="text-sm font-medium text-slate-900 leading-snug">{task.title}</p>
         {isAdmin && (
           <button onClick={() => onDelete(task.id)}
             className="opacity-0 group-hover:opacity-100 flex-shrink-0 p-1 text-slate-500 hover:text-red-400 rounded transition-all"
@@ -35,7 +35,7 @@ function TaskCard({ task, isAdmin, onStatusChange, onDelete, projectId }) {
       </div>
 
       {task.description && (
-        <p className="text-xs text-slate-500 mt-1 line-clamp-2">{task.description}</p>
+        <p className="text-xs text-slate-600 mt-1 line-clamp-2">{task.description}</p>
       )}
 
       <div className="flex items-center gap-1.5 mt-3 flex-wrap">
@@ -46,13 +46,13 @@ function TaskCard({ task, isAdmin, onStatusChange, onDelete, projectId }) {
       </div>
 
       {/* Footer: assignee + due date */}
-      <div className="flex items-center justify-between mt-3 pt-2.5 border-t border-slate-700">
+      <div className="flex items-center justify-between mt-3 pt-2.5 border-t border-slate-200">
         {task.assigned_to ? (
           <div className="flex items-center gap-1.5">
             <div className="w-5 h-5 rounded-full bg-indigo-600 flex items-center justify-center text-white text-xs font-bold">
               {task.assigned_to.full_name?.[0]?.toUpperCase()}
             </div>
-            <span className="text-xs text-slate-400">{task.assigned_to.full_name}</span>
+            <span className="text-xs text-slate-700">{task.assigned_to.full_name}</span>
           </div>
         ) : <span className="text-xs text-slate-600">Unassigned</span>}
 
@@ -69,7 +69,7 @@ function TaskCard({ task, isAdmin, onStatusChange, onDelete, projectId }) {
           {COLUMNS.filter(c => c.status !== task.status).slice(0, 2).map(c => (
             <button key={c.status}
               onClick={() => onStatusChange(task.id, c.status, task.version)}
-              className="text-xs text-slate-500 hover:text-indigo-400 px-2 py-0.5 rounded border border-slate-700 hover:border-indigo-600 transition-all">
+              className="text-xs text-slate-700 hover:text-indigo-600 px-2 py-0.5 rounded border border-slate-200 hover:border-indigo-600 transition-all">
               → {c.label}
             </button>
           ))}
@@ -84,8 +84,8 @@ function KanbanColumn({ column, tasks, isAdmin, onStatusChange, onDelete, projec
   return (
     <div className={`flex flex-col min-w-0 border-t-2 ${column.color}`}>
       <div className="flex items-center justify-between px-1 py-3">
-        <span className="text-sm font-semibold text-slate-300">{column.label}</span>
-        <span className="text-xs bg-slate-800 border border-slate-700 text-slate-400 px-2 py-0.5 rounded-full">
+        <span className="text-sm font-semibold text-slate-700">{column.label}</span>
+        <span className="text-xs bg-slate-100 border border-slate-200 text-slate-700 px-2 py-0.5 rounded-full">
           {tasks.length}
         </span>
       </div>
@@ -95,7 +95,7 @@ function KanbanColumn({ column, tasks, isAdmin, onStatusChange, onDelete, projec
             onStatusChange={onStatusChange} onDelete={onDelete} projectId={projectId} />
         ))}
         {tasks.length === 0 && (
-          <div className="border border-dashed border-slate-800 rounded-xl h-16 flex items-center justify-center">
+          <div className="border border-dashed border-slate-200 rounded-xl h-16 flex items-center justify-center">
             <p className="text-xs text-slate-700">No tasks</p>
           </div>
         )}
@@ -246,14 +246,14 @@ export default function TaskBoardPage() {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           <button onClick={() => navigate('/projects')}
-            className="p-1.5 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-all">
+            className="p-1.5 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition-all">
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
           <div>
-            <h1 className="text-xl font-bold text-white">{project?.name}</h1>
-            <p className="text-slate-400 text-sm">{tasks.length} total tasks</p>
+            <h1 className="text-xl font-bold text-slate-900">{project?.name}</h1>
+            <p className="text-slate-600 text-sm">{tasks.length} total tasks</p>
           </div>
         </div>
         {isAdmin && (

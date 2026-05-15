@@ -25,17 +25,17 @@ export default function Modal({ open, onClose, title, children, maxWidth = 'max-
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/30 backdrop-blur-sm animate-fade-in"
       onClick={(e) => { if (e.target === overlayRef.current) onClose() }}
       role="dialog" aria-modal="true" aria-labelledby="modal-title"
     >
       <div className={`card w-full ${maxWidth} shadow-2xl animate-slide-up`}>
         {/* Header */}
-        <div className="flex items-center justify-between p-5 border-b border-slate-700">
-          <h2 id="modal-title" className="text-base font-semibold text-white">{title}</h2>
+        <div className="flex items-center justify-between p-5 border-b border-slate-200 bg-slate-50">
+          <h2 id="modal-title" className="text-base font-semibold text-slate-900">{title}</h2>
           <button
             onClick={onClose}
-            className="text-slate-400 hover:text-white transition-colors p-1 rounded-md hover:bg-slate-700"
+            className="text-slate-500 hover:text-slate-900 transition-colors p-1 rounded-md hover:bg-slate-100"
             aria-label="Close modal"
           >
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
